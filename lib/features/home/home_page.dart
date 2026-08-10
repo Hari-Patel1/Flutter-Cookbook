@@ -1,3 +1,4 @@
+import 'package:cookbookv2/features/recpie/manual_recipe_editor_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbookv2/features/home/greeting.dart';
 
@@ -12,9 +13,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           Greeting(DateTime.now().hour),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
 
@@ -81,7 +80,14 @@ class HomePage extends StatelessWidget {
                   child: _ActionCard(
                     icon: Icons.edit_rounded,
                     title: 'Write recipe',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const ManualRecipeEditorPage(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -125,8 +131,7 @@ class HomePage extends StatelessWidget {
             const _EmptySection(
               icon: Icons.menu_book_outlined,
               title: 'Your cookbook is empty',
-              message:
-              'Add your first recipe and it will appear here.',
+              message: 'Add your first recipe and it will appear here.',
             ),
 
             const SizedBox(height: 32),
@@ -144,7 +149,7 @@ class HomePage extends StatelessWidget {
               icon: Icons.restaurant_outlined,
               title: 'Recipe recommendations',
               message:
-              'Recommendations will appear here once the recipe finder is connected.',
+                  'Recommendations will appear here once the recipe finder is connected.',
             ),
           ],
         ),
@@ -183,20 +188,11 @@ class _ActionCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              Icon(
-                icon,
-                size: 28,
-                color: theme.colorScheme.primary,
-              ),
+              Icon(icon, size: 28, color: theme.colorScheme.primary),
 
               const SizedBox(height: 18),
 
-              Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
             ],
           ),
         ),
@@ -226,11 +222,7 @@ class _EmptySection extends StatelessWidget {
 
         child: Row(
           children: [
-            Icon(
-              icon,
-              size: 40,
-              color: theme.colorScheme.primary,
-            ),
+            Icon(icon, size: 40, color: theme.colorScheme.primary),
 
             const SizedBox(width: 18),
 
@@ -241,18 +233,14 @@ class _EmptySection extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
 
                   const SizedBox(height: 5),
 
                   Text(
                     message,
-                    style: TextStyle(
-                      color: theme.colorScheme.onSurfaceVariant,
-                    ),
+                    style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
                   ),
                 ],
               ),
